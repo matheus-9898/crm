@@ -1,0 +1,248 @@
+/* #region GERAL */
+@charset "utf-8";
+
+@font-face {
+    font-family: 'PublicSansRegular';
+    src: url(../fontes/Public_Sans/static/PublicSans-Medium.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PublicSansRegular';
+    font-size: 14px;
+}
+
+:root {
+    --borderRadius: 3px;
+    --widthList: 270px;
+}
+
+body,
+html {
+    height: 100%;
+    background-image: url('../imagens/fundo2.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+input[type="submit"]:hover{
+    background-color: rgba(169, 169, 169, 0.8) !important;
+}
+.material-symbols-outlined:hover:not(#btAddLista>.material-symbols-outlined){
+    opacity: 0.7;
+}
+
+/* #endregion */
+
+/* #region MODAIS */
+#modalAddItem,
+#modalAddLista,
+#modalEditLista,
+#modalEditItem {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    display: none;
+    padding: 0 20px;
+    border-radius: var(--borderRadius);
+}
+
+#modalAddItem>form>input,
+#modalAddLista>form>input,
+#modalEditLista>form>input,
+#modalEditItem>form>input {
+    display: block;
+    margin: 25px auto;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 200px;
+    height: 30px;
+}
+
+#modalAddItem>form>input:focus,
+#modalAddLista>form>input:focus,
+#modalEditLista>form>input:focus,
+#modalEditItem>form>input:focus {
+    outline: none;
+}
+
+#modalAddItem>form>input[type="submit"],
+#modalAddLista>form>input[type="submit"],
+#modalEditLista>form>input[type="submit"],
+#modalEditItem>form>input[type="submit"] {
+    padding: 5px;
+    border-radius: var(--borderRadius);
+    background-color: darkgrey;
+    border: none;
+    width: 100px;
+    cursor: pointer;
+}
+
+/* #endregion */
+
+/* #region CABEÇALHO */
+header{
+    color: white;
+    height: 10%;
+    max-height: 80px;
+    min-height: 55px;
+    /* background-image: linear-gradient(to bottom, black, transparent); */
+    background-color: rgba(0, 0, 0, 0.286);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+header > #containerCabecalho{
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+header > #containerCabecalho > #containerLogo{
+    font-size: 30px;
+    text-decoration: underline;
+    cursor: default;
+}
+header > #containerCabecalho > #containerAutor{
+    font-size: 10px;
+    cursor: default;
+}
+
+/* #endregion */
+
+/* #region CONTEÚDO */
+#containerListas {
+    display: flex;
+    align-items: start;
+    height: 90%;
+    overflow-x: auto;
+    padding-top: 20px;
+}
+
+#containerListas #areaLista {
+    display: flex;
+    align-items: start;
+    height: 100%;
+}
+
+#containerListas #areaLista .lista {
+    background-color: rgba(255, 255, 255, 0.8);
+    width: var(--widthList);
+    margin: 0 10px;
+    border-radius: var(--borderRadius);
+    flex-shrink: 0;
+}
+
+#containerListas #areaLista .lista .containerNomeLista {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5px 0 5px;
+}
+
+#containerListas #areaLista .lista .containerNomeLista .nomeLista {
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+#containerListas #areaLista .lista .containerNomeLista .btsLista {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#containerListas #areaLista .lista .containerNomeLista .btsLista .btDeleteLista {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#containerListas #areaLista .lista .containerNomeLista .btsLista .btEditNomeLista {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#containerListas #areaLista .lista .areaItem {
+    padding: 10px 3px;
+}
+
+#containerListas #areaLista .lista .areaItem .itemLista {
+    background-color: darkgrey;
+    margin: 7px 0;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: var(--borderRadius);
+}
+#containerListas #areaLista .lista .areaItem .itemLista:hover{
+    background-color: rgba(169, 169, 169, 0.8);
+}
+
+#containerListas #areaLista .lista .areaItem .itemLista>div {
+    display: none;
+    overflow: hidden;
+    line-height: 1.5em;
+}
+
+#containerListas #areaLista .lista .areaItem .itemLista> :first-child {
+    display: block;
+}
+
+#containerListas #areaLista .lista .areaItem .itemLista .btsItem {
+    text-align: right;
+}
+
+#containerListas #areaLista .lista .areaItem .itemLista .btsItem .btEditItem {
+    font-size: 20px;
+}
+
+#containerListas #areaLista .lista .areaItem .itemLista .btsItem .btDeleteItem {
+    font-size: 20px;
+}
+
+#containerListas #areaLista .lista .containerBtAddItem {
+    text-align: right;
+}
+
+#containerListas #areaLista .lista .containerBtAddItem .btAddItem {
+    cursor: pointer;
+}
+
+#containerListas .containerBtAddLista {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: var(--borderRadius);
+    width: var(--widthList);
+    flex-shrink: 0;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 10px;
+}
+#containerListas .containerBtAddLista:hover{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#containerListas .containerBtAddLista #btAddLista {
+    display: flex;
+    align-items: center;
+}
+
+/* #endregion */
+
+@media screen and (max-width:480px) {
+    header > #containerCabecalho > #containerAutor{
+        font-size: 8px;
+    }
+    :root{
+        --widthList: 250px;
+    }
+    
+}

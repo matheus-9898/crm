@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+a{
+    color: cornflowerblue;
+}
+input,
+select{
+    padding: 3px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+input:focus,
+select:focus{
+    outline: 0px;
+}
+
+main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 30px;
+}
+main h1{
+    color: #3b434a;
+}
+main .formLogin{
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+main .formLogin input{
+    width: 100%;
+}
+main .formLogin input[type=submit]{
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: #4485ba;
+    border: 0px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}

@@ -1,6 +1,7 @@
 <?php 
     namespace controllers;
     use views;
+    use models;
 
     class crmController{
         public static function executar(){
@@ -19,6 +20,26 @@
         private static function redirect(){
             header('Location: '.ROOT_PATH);
             die();
+        }
+
+        public static function getDados(){
+            $listas = models\crmModel::getListas();
+            $itens = models\crmModel::getItens();
+
+/*             $dados = [];
+            
+            foreach ($listas as $keyListas => $valListas) {
+
+                $dados[$keyListas]['nomeLista'] = $valListas['nome'];
+
+                foreach ($itens as $keyItens => $valItens) {
+
+                    if($valItens['lista_id'] == $valListas['id']){
+                        $dados[$keyListas][''] = $valListas['nome'];
+                    }
+                }
+
+            } */
         }
     }
 ?>

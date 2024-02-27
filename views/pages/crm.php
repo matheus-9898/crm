@@ -73,10 +73,10 @@
 
                         <?php
                         if (is_array($value)) {
-                            for($i=0;$i<count($value)-1;$i++){
+                            for($i=0;$i<count($value)-2;$i++){
                         ?>
-                                <div class="itemLista" draggable="true" id="item1">
-                                    <div class="contNomeCliente"><?= $value[$i]['nome'] ?></div>
+                                <div class="itemLista" draggable="true">
+                                    <div class="contNomeCliente"><?= $value[$i]['nomeItem'] ?></div>
                                     <div class="contTelCliente"><?= $value[$i]['telefone'] ?></div>
                                     <div class="contEndCliente"><?= $value[$i]['endereco'] ?></div>
                                     <div class="contEmailCliente"><?= $value[$i]['email'] ?></div>

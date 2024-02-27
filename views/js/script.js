@@ -1,5 +1,5 @@
 $(function(){
-     exibirItem();
+    exibirItem();
 
 //APENAS SUBSTITUIR ESTAS FUNÇÕES POR FUNÇÕES PHP REALIZANDO CRUD
 /*    

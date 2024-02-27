@@ -32,13 +32,15 @@
 
                 $i = 0;
 
+                $dados[$keyListas]['idLista'] = $valListas['id'];
                 $dados[$keyListas]['nomeLista'] = $valListas['nome'];
 
                 foreach ($itens as $keyItens => $valItens) {
 
                     if($valItens['lista_id'] == $valListas['id']){
                         $dados[$keyListas][$i]=[
-                            'nome' => $valItens['nome'],
+                            'idItem' => $valItens['id'],
+                            'nomeItem' => $valItens['nome'],
                             'telefone' => $valItens['telefone'],
                             'endereco' => $valItens['endereco'],
                             'email' => $valItens['email'],

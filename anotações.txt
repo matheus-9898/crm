@@ -1,0 +1,42 @@
+Array
+(
+    [0] => Array
+        (
+            [idLista] => 
+            [nomeLista] => lead
+            [0] => Array
+                (
+                    [idItem] => 
+                    [nomeItem] => carol
+                    [telefone] => 123
+                    [endereco] => abc
+                    [email] => abc@gmail.com
+                )
+
+            [1] => Array
+                (
+                    [idItem] => 
+                    [nomeItem] => bruna
+                    [telefone] => 123
+                    [endereco] => abc
+                    [email] => abc@gmail.com
+                )
+
+        )
+
+    [1] => Array
+        (
+            [idLista] => 
+            [nomeLista] => em contato
+            [0] => Array
+                (
+                    [idItem] => 
+                    [nomeItem] => julia
+                    [telefone] => 123
+                    [endereco] => abc
+                    [email] => abc@gmail.com
+                )
+
+        )
+
+)

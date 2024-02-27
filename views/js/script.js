@@ -1,13 +1,16 @@
 $(function(){
+     exibirItem();
 
-    exibirItem();
+//APENAS SUBSTITUIR ESTAS FUNÇÕES POR FUNÇÕES PHP REALIZANDO CRUD
+/*    
     addLista();
     addItemLista();
-    arrastarSoltarItem();
     deleteLista();
     deleteItem();
     editNomeLista();
-    editItem();
+    editItem(); 
+    arrastarSoltarItem();
+*/
 
 })
 

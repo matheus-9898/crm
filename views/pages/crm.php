@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="views/css/crm.css">
 </head>
+
 <body>
 
     <div id="modalAddItem">
@@ -53,31 +55,47 @@
 
 
     <main id="containerListas">
-
         <div id="areaLista">
-            <!-- atenção remover essa lista -->
-<!--             <div class="lista">
-                <div class="containerNomeLista">
-                    <span class="nomeLista">Lead</span>
-                    <div class="btsLista">
-                        <span class="material-symbols-outlined btEditNomeLista">edit</span>
-                        <span class="material-symbols-outlined btDeleteLista">delete</span>
+
+            <?php
+            foreach ($dados as $key => $value) {
+            ?>
+
+                <div class="lista">
+                    <div class="containerNomeLista">
+                        <span class="nomeLista"><?= $value['nomeLista'] ?></span>
+                        <div class="btsLista">
+                            <span class="material-symbols-outlined btEditNomeLista">edit</span>
+                            <span class="material-symbols-outlined btDeleteLista">delete</span>
+                        </div>
                     </div>
-                </div>
-                <div class="areaItem">
-                    <div class="itemLista" draggable="true" id="item1">
-                        <span>item 1</span>
-                    </div>
-                    <div class="itemLista" draggable="true">
-                        <span>item 2</span>
+                    <div class="areaItem">
+
+                        <?php
+                        if (is_array($value)) {
+                            for($i=0;$i<count($value)-1;$i++){
+                        ?>
+                                <div class="itemLista" draggable="true" id="item1">
+                                    <div class="contNomeCliente"><?= $value[$i]['nome'] ?></div>
+                                    <div class="contTelCliente"><?= $value[$i]['telefone'] ?></div>
+                                    <div class="contEndCliente"><?= $value[$i]['endereco'] ?></div>
+                                    <div class="contEmailCliente"><?= $value[$i]['email'] ?></div>
+                                    <div class="btsItem"> <span class="material-symbols-outlined btEditItem">edit</span> <span class="material-symbols-outlined btDeleteItem">delete</span> </div>
+                                </div>
+                        <?php
+                            }
+                        }
+                        ?>
+
                     </div>
 
+                    <div class="containerBtAddItem">
+                        <span class="material-symbols-outlined btAddItem">add</span>
+                    </div>
                 </div>
-            
-                <div class="containerBtAddItem">
-                    <span class="material-symbols-outlined btAddItem">add</span>
-                </div>
-            </div> -->
+            <?php
+            }
+            ?>
         </div>
 
         <div class="containerBtAddLista">
@@ -86,8 +104,9 @@
 
     </main>
 
-<script src="views/js/jquery.js"></script>
-<script src="views/js/notify.min.js"></script>
-<script src="views/js/script.js"></script>
+    <script src="views/js/jquery.js"></script>
+    <script src="views/js/notify.min.js"></script>
+    <script src="views/js/script.js"></script>
 </body>
+
 </html>

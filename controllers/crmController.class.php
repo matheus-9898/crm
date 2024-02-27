@@ -5,7 +5,7 @@
 
     class crmController{
         public static function executar(){
-            views\view::render('crm');
+            views\view::render('crm',self::getDados());
         }
         public static function sair(){
             session_destroy();
@@ -26,20 +26,30 @@
             $listas = models\crmModel::getListas();
             $itens = models\crmModel::getItens();
 
-/*             $dados = [];
+            $dados = [];
             
             foreach ($listas as $keyListas => $valListas) {
+
+                $i = 0;
 
                 $dados[$keyListas]['nomeLista'] = $valListas['nome'];
 
                 foreach ($itens as $keyItens => $valItens) {
 
                     if($valItens['lista_id'] == $valListas['id']){
-                        $dados[$keyListas][''] = $valListas['nome'];
+                        $dados[$keyListas][$i]=[
+                            'nome' => $valItens['nome'],
+                            'telefone' => $valItens['telefone'],
+                            'endereco' => $valItens['endereco'],
+                            'email' => $valItens['email'],
+                        ];
+                        $i++;
                     }
                 }
 
-            } */
+            }
+
+            return $dados;
         }
     }
 ?>

@@ -4,8 +4,8 @@
 
     class crmModel{
         public static function getListas(){
-            $sql = mysqlModel::conexaoBD()->prepare('SELECT * FROM listas');
-            $sql->execute();
+            $sql = mysqlModel::conexaoBD()->prepare('SELECT * FROM listas WHERE usuario_id=?');
+            $sql->execute(array($_SESSION['idUsuario']));
             $info = $sql->fetchAll(PDO::FETCH_ASSOC);
             return $info;
         }

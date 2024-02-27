@@ -9,8 +9,10 @@
         }
 
         public static function logar($user,$pass){
-            if(models\loginModel::logar($user,$pass)){
+            $result = models\loginModel::logar($user,$pass);
+            if($result){
                 $_SESSION['loginCrm'] = true;
+                $_SESSION['idUsuario'] = $result['id'];
                 self::redirect();
             }else{
                 self::notify('Dados inválidos.','error');

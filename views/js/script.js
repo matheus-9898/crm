@@ -1,9 +1,9 @@
 $(function(){
     exibirItem();
+    addLista();
 
 //APENAS SUBSTITUIR ESTAS FUNÇÕES POR FUNÇÕES PHP REALIZANDO CRUD
 /*    
-    addLista();
     addItemLista();
     deleteLista();
     deleteItem();
@@ -13,6 +13,39 @@ $(function(){
 */
 
 })
+
+//adicionar lista
+var addLista = function(){
+
+    $('.containerBtAddLista').off('click').click(function(){
+
+        $('#modalAddLista > form input[type=submit]').prop('disabled', false);
+
+        $('#modalAddLista').fadeIn(200);
+
+        $('#modalAddLista #nomeLista').focus();
+
+        $('#modalAddLista > form').off('submit').submit(function(){
+
+            $.ajax({
+                type: "post",
+                url: "index.php/?addLista",
+                data: $(this).serialize(),
+                dataType: "json"
+            }).done(function(data){
+                /* if(data.success)
+                    console.log('sucesso');
+                else
+                    console.log('erro'); */
+            });
+
+            $('#modalAddLista').fadeOut(200);
+
+            return false;
+        })
+
+    })
+}
 
 //editar item
 var editItem = function(){
@@ -107,35 +140,6 @@ var exibirItem = function(){
         }
     })
 
-}
-
-//adicionar lista
-var addLista = function(){
-
-    $('.containerBtAddLista').off('click').click(function(){
-
-        $('#modalAddLista > form input[type=submit]').prop('disabled', false);
-
-        $('#modalAddLista').fadeIn(200);
-
-        $('#modalAddLista #nomeLista').focus();
-
-        $('#modalAddLista > form').off('submit').submit(function(){
-
-            var nomeLista = $('#modalAddLista > form > #nomeLista').val();
-
-            $('#containerListas #areaLista').append('<div class="lista" draggable="true"><div class="containerNomeLista"><span class="nomeLista">'+nomeLista+'</span><div class="btsLista"><span class="material-symbols-outlined btEditNomeLista">edit</span><span class="material-symbols-outlined btDeleteLista">delete</span></div></div><div class="areaItem"></div><div class="containerBtAddItem"><span class="material-symbols-outlined btAddItem">add</span></div></div>');
-
-            $('#modalAddLista > form input[type=submit]').prop('disabled', true);
-
-            $('#modalAddLista').fadeOut(200);
-
-            $('#modalAddLista > form input[type=text]').val('');
-
-            return false;
-        })
-
-    })
 }
 
 //adicionar item

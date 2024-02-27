@@ -1,6 +1,10 @@
 <?php 
     class aplication{
         public static function executar(){
+            if(isset($_GET['addLista'])){
+                controllers\crmController::addLista($_POST['nomeLista']);
+            }
+
             if(isset($_GET['sair'])){
                 controllers\crmController::sair();
             }

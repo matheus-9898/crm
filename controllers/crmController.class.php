@@ -53,5 +53,9 @@
 
             return $dados;
         }
+
+        public static function addLista($nomeLista){
+            models\crmModel::addLista($nomeLista);
+        }
     }
 ?>

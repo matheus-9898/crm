@@ -33,7 +33,7 @@
 
     <div id="modalAddLista">
         <form>
-            <input type="text" placeholder="Nome da lista" id="nomeLista" autocomplete="off">
+            <input type="text" placeholder="Nome da lista" id="nomeLista" autocomplete="off" name="nomeLista">
             <input type="submit">
         </form>
     </div>

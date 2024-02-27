@@ -15,5 +15,10 @@
             $info = $sql->fetchAll(PDO::FETCH_ASSOC);
             return $info;
         }
+
+        public static function addLista($nomeLista){
+            $sql = mysqlModel::conexaoBD()->prepare('INSERT INTO listas VALUES (?,?,?)');
+            $sql->execute(array(null,$nomeLista,$_SESSION['idUsuario']));
+        }
     }
 ?>

@@ -15,6 +15,9 @@
                     case 'editLista':
                         controllers\crmController::editLista($_POST['idLista'],$_POST['novoNome']);
                         break;
+                    case 'addItem':
+                        controllers\crmController::addItem($_POST['idLista'],$_POST['nome'],$_POST['tel'],$_POST['end'],$_POST['email']);
+                        break;
                     
                     default:
                         # code...

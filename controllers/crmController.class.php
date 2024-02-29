@@ -66,5 +66,9 @@
         public static function editLista($idLista,$novoNome){
             models\crmModel::editLista($idLista,$novoNome);
         }
+
+        public static function addItem($idLista,$nome,$tel,$end,$email){
+            models\crmModel::addItem($idLista,$nome,$tel,$end,$email);
+        }
     }
 ?>

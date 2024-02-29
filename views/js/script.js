@@ -67,7 +67,7 @@ $(function(){
         return false;
     })
 
-    //abrir modal editar nome da lista
+    //abrir modal e editar nome da lista
     $('#areaLista').on('click','.lista .containerNomeLista .btsLista .btEditNomeLista', function(){
 
         $('#modalAddLista > form input[type=submit]').prop('disabled', false);
@@ -104,7 +104,6 @@ $(function(){
 
     })
 
-
     //exibir dados do item
     $('#areaLista').on('click', '.lista .areaItem .itemLista',function(){
 
@@ -130,13 +129,50 @@ $(function(){
         });
     })
 
+    //adicionar item nas listas
+    $('#areaLista').on('click','.lista .containerBtAddItem .btAddItem',function(){
+
+        //var areaItem = $(this).parent().prev();
+        $('#modalAddLista > form input[type=submit]').prop('disabled', false);
+        $('#modalAddItem').fadeIn(200);
+        $('#modalAddItem #nomeCliente').focus();
+
+        var idLista = parseInt(this.getAttribute('id-lista'));
+        $('#modalAddItem form').off('submit').submit(function(){
+
+            var nome = $('#nomeCliente').val();
+            var tel = $('#telCliente').val();
+            var end = $('#enderecoCliente').val();
+            var email = $('#emailCliente').val();
+
+            $.ajax({
+                type: "post",
+                url: "index.php/?ajax=addItem",
+                data: {
+                    idLista : idLista,
+                    nome : nome,
+                    tel : tel,
+                    end : end,
+                    email : email
+                },
+                dataType: "json"
+            }).done(function(data){
+                getDados();
+            });
+
+            $('#modalAddItem').fadeOut(200);
+            $('#modalAddItem > form input:not([type=submit])').val('');
+
+            return false;
+        })
+    })
+
 
 })
 
 
 //APENAS SUBSTITUIR ESTAS FUNÇÕES POR FUNÇÕES PHP REALIZANDO CRUD
 /*    
-    addItemLista();
     deleteItem();
     editItem(); 
     arrastarSoltarItem();
@@ -192,46 +228,6 @@ var deleteLista = function(){
     $('#areaLista').on('click','.lista .containerNomeLista .btsLista .btDeleteLista',function(){
         $(this).parent().parent().parent().remove();
     })
-}
-
-//adicionar item
-var addItemLista = function(){
-
-    var nomeCliente;
-    var telCliente;
-    var enderecoCliente;
-    var emailCliente;
-
-
-    $('#areaLista').on('click','.lista .containerBtAddItem .btAddItem',function(){
-
-        var areaItem = $(this).parent().prev();
-
-        $('#modalAddLista > form input[type=submit]').prop('disabled', false);
-
-        $('#modalAddItem').fadeIn(200);
-
-        $('#modalAddItem #nomeCliente').focus();
-
-        $('#modalAddItem form').off('submit').submit(function(){
-
-            nomeCliente = $('#modalAddItem #nomeCliente').val();
-            telCliente = $('#modalAddItem #telCliente').val();
-            enderecoCliente = $('#modalAddItem #enderecoCliente').val();
-            emailCliente = $('#modalAddItem #emailCliente').val();
-
-            $(areaItem).append('<div class="itemLista" draggable="true"> <div class="contNomeCliente">'+nomeCliente+'</div> <div class="contTelCliente">'+telCliente+'</div> <div class="contEndCliente">'+enderecoCliente+'</div> <div class="contEmailCliente">'+emailCliente+'</div> <div class="btsItem"> <span class="material-symbols-outlined btEditItem">edit</span> <span class="material-symbols-outlined btDeleteItem">delete</span> </div> </div>');
-
-            $('#modalAddLista > form input[type=submit]').prop('disabled', true);
-
-            $('#modalAddItem').fadeOut(200);
-
-            $('#modalAddItem > form input:not([type=submit])').val('');
-
-            return false;
-        })
-    })
-
 }
 
 //arrastar e soltar item

@@ -42,5 +42,13 @@
             $data['editLista'] = true;
             die(json_encode($data));
         }
+
+        public static function addItem($idLista,$nome,$tel,$end,$email){
+            $sql = mysqlModel::conexaoBD()->prepare('INSERT INTO itens VALUES (?,?,?,?,?,?)');
+            $sql->execute(array(null,$nome,$tel,$end,$email,$idLista));
+
+            $data['addItem'] = true;
+            die(json_encode($data));
+        }
     }
 ?>

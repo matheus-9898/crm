@@ -182,51 +182,59 @@ $(function(){
         });
     })
 
-
-})
-
-
-//APENAS SUBSTITUIR ESTAS FUNÇÕES POR FUNÇÕES PHP REALIZANDO CRUD
-/*    
-    editItem(); 
-    arrastarSoltarItem();
-*/
-
-//editar item
-var editItem = function(){
+    //editar itens
     $('#areaLista').on('click','.lista .areaItem .itemLista .btsItem .btEditItem', function(){
 
         $('#modalAddLista > form input[type=submit]').prop('disabled', false);
-        
         $('#modalEditItem').fadeIn(200);
-
         $('#modalEditItem #nomeClienteEdit').focus();
 
         var alteracaoNome = $(this).parent().parent().children('.contNomeCliente');
         var alteracaoTel = $(this).parent().parent().children('.contTelCliente');
         var alteracaoEnd = $(this).parent().parent().children('.contEndCliente');
         var alteracaoEmail = $(this).parent().parent().children('.contEmailCliente');
-        
         $('#nomeClienteEdit').val($(alteracaoNome).html());
         $('#telClienteEdit').val($(alteracaoTel).html());
         $('#enderecoClienteEdit').val($(alteracaoEnd).html());
         $('#emailClienteEdit').val($(alteracaoEmail).html());
 
+        var idItem = parseInt(this.getAttribute('id-item'));
         $('#modalEditItem > form').off('submit').submit(function(){
             
-            $(alteracaoNome).html($('#nomeClienteEdit').val());
-            $(alteracaoTel).html($('#telClienteEdit').val());
-            $(alteracaoEnd).html($('#enderecoClienteEdit').val());
-            $(alteracaoEmail).html($('#emailClienteEdit').val());
+            var novoNome = $('#nomeClienteEdit').val();
+            var novoTel = $('#telClienteEdit').val();
+            var novoEnd = $('#enderecoClienteEdit').val();
+            var novoEmail = $('#emailClienteEdit').val();
+
+            $.ajax({
+                type: "post",
+                url: "index.php/?ajax=editItem",
+                data: {
+                    idItem : idItem,
+                    novoNome : novoNome,
+                    novoTel : novoTel,
+                    novoEnd : novoEnd,
+                    novoEmail : novoEmail
+                },
+                dataType: "json"
+            }).done(function(data){
+                getDados();
+            });
 
             $('#modalAddLista > form input[type=submit]').prop('disabled', true);
-
             $('#modalEditItem').fadeOut(200);
 
             return false;
         })
     })
-}
+
+})
+
+
+//APENAS SUBSTITUIR ESTAS FUNÇÕES POR FUNÇÕES PHP REALIZANDO CRUD
+/*    
+    arrastarSoltarItem();
+*/
 
 //deletar lista
 var deleteLista = function(){

@@ -21,6 +21,9 @@
                     case 'deleteItem':
                         controllers\crmController::deleteItem($_POST['idItem']);
                         break;
+                    case 'editItem':
+                        controllers\crmController::editItem($_POST['idItem'],$_POST['novoNome'],$_POST['novoTel'],$_POST['novoEnd'],$_POST['novoEmail']);
+                        break;
                     
                     default:
                         # code...

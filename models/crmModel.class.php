@@ -58,5 +58,13 @@
             $data['deleteItem'] = true;
             die(json_encode($data));
         }
+
+        public static function editItem($idItem,$novoNome,$novoTel,$novoEnd,$novoEmail){
+            $sql = mysqlModel::conexaoBD()->prepare('UPDATE itens SET nome=?,telefone=?,endereco=?,email=? WHERE id=?');
+            $sql->execute(array($novoNome,$novoTel,$novoEnd,$novoEmail,$idItem));
+
+            $data['editItem'] = true;
+            die(json_encode($data));
+        }
     }
 ?>

@@ -74,5 +74,9 @@
         public static function deleteItem($idItem){
             models\crmModel::deleteItem($idItem);
         }
+
+        public static function editItem($idItem,$novoNome,$novoTel,$novoEnd,$novoEmail){
+            models\crmModel::editItem($idItem,$novoNome,$novoTel,$novoEnd,$novoEmail);
+        }
     }
 ?>

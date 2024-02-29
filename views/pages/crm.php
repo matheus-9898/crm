@@ -56,7 +56,8 @@
 
     <main id="containerListas">
         <div id="areaLista">
-<!--                 <div class="lista">
+<!--ESTRUTURA ELEMENTO LISTA
+                <div class="lista">
                     <div class="containerNomeLista">
                         <span class="nomeLista">nome Lista</span>
                         <div class="btsLista">
@@ -76,7 +77,8 @@
                     <div class="containerBtAddItem">
                         <span class="material-symbols-outlined btAddItem">add</span>
                     </div>
-                </div> -->
+                </div>
+-->
         </div>
 
         <div class="containerBtAddLista">

@@ -12,7 +12,7 @@ $(function(){
             /* obter dados dos itens
              var i = 0;
             while(value[1][i] != null){
-                console.log(value[1][i]);
+                console.log(value[1][i]['nomeItem']);
                 i++;
             } */
 
@@ -20,10 +20,21 @@ $(function(){
 
             $('#areaLista').html('');
 
-            $.each(dados, function (index, value) { 
-                
-                $('<div class="lista"><div class="containerNomeLista"><span class="nomeLista">'+value[1]['nomeLista']+'</span><div class="btsLista"><span class="material-symbols-outlined btEditNomeLista">edit</span><span class="material-symbols-outlined btDeleteLista">delete</span></div></div><div class="areaItem"><?php $i = 0; while('+value[1]+'[$i] != null){ ?><div class="itemLista" draggable="true"><div class="contNomeCliente"><?= '+value[1]+'[$i]'+['nomeItem']+' ?></div><div class="contTelCliente"><?= '+value[1]+'[$i]'+['telefone']+' ?></div><div class="contEndCliente"><?= '+value[1]+'[$i]'+['endereco']+' ?></div><div class="contEmailCliente"><?= '+value[1]+'[$i]'+['email']+' ?></div><div class="btsItem"> <span class="material-symbols-outlined btEditItem">edit</span> <span class="material-symbols-outlined btDeleteItem">delete</span> </div></div><?php $i++;} ?></div><div class="containerBtAddItem"><span class="material-symbols-outlined btAddItem">add</span></div></div>').appendTo('#areaLista');
+            $.each(dados, function (index, value) {
 
+                var html = '<div class="lista"><div class="containerNomeLista"><span class="nomeLista">'+value[1]['nomeLista']+'</span><div class="btsLista"><span class="material-symbols-outlined btEditNomeLista">edit</span><span class="material-symbols-outlined btDeleteLista">delete</span></div></div><div class="areaItem">';
+
+                var i = 0;
+                while(value[1][i] != null){
+
+                    html += '<div class="itemLista" draggable="true"><div class="contNomeCliente">'+value[1][i]['nomeItem']+'</div><div class="contTelCliente">'+value[1][i]['telefone']+'</div><div class="contEndCliente">'+value[1][i]['endereco']+'</div><div class="contEmailCliente">'+value[1][i]['email']+'</div><div class="btsItem"> <span class="material-symbols-outlined btEditItem">edit</span> <span class="material-symbols-outlined btDeleteItem">delete</span> </div></div>';
+
+                    i++;
+                }
+
+                html += '</div><div class="containerBtAddItem"><span class="material-symbols-outlined btAddItem">add</span></div></div>';
+
+                $(html).appendTo('#areaLista');
             });
         });
     }

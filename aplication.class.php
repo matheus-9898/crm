@@ -12,6 +12,9 @@
                     case 'deleteLista':
                         controllers\crmController::deleteLista($_POST['idLista']);
                         break;
+                    case 'editLista':
+                        controllers\crmController::editLista($_POST['idLista'],$_POST['novoNome']);
+                        break;
                     
                     default:
                         # code...

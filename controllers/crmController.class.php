@@ -62,5 +62,9 @@
         public static function deleteLista($idLista){
             models\crmModel::deleteLista($idLista);
         }
+
+        public static function editLista($idLista,$novoNome){
+            models\crmModel::editLista($idLista,$novoNome);
+        }
     }
 ?>

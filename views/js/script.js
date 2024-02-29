@@ -67,6 +67,44 @@ $(function(){
         return false;
     })
 
+    //abrir modal editar nome da lista
+    $('#areaLista').on('click','.lista .containerNomeLista .btsLista .btEditNomeLista', function(){
+
+        $('#modalAddLista > form input[type=submit]').prop('disabled', false);
+        
+        $('#modalEditLista').fadeIn(200);
+
+        $('#modalEditLista #nomeEditLista').focus();
+
+        var alteracaoNome = $(this).parent().parent().children('.nomeLista');
+        
+        $('#nomeEditLista').val($(alteracaoNome).html());
+
+
+        //editar nome da lista
+        var idLista = parseInt(this.getAttribute('id-lista'));
+
+        $('#modalEditLista > form').off('submit').submit(function(){
+
+            var novoNome = $('#nomeEditLista').val();
+
+            $.ajax({
+                type: "post",
+                url: "index.php/?ajax=editLista",
+                data: {idLista : idLista,novoNome : novoNome},
+                dataType: "json"
+            }).done(function(data){
+                getDados();
+            });
+
+            $('#modalEditLista').fadeOut(200);
+
+            return false;
+        })
+
+    })
+
+
     //exibir dados do item
     $('#areaLista').on('click', '.lista .areaItem .itemLista',function(){
 
@@ -92,12 +130,14 @@ $(function(){
         });
     })
 
+
 })
+
+
 //APENAS SUBSTITUIR ESTAS FUNÇÕES POR FUNÇÕES PHP REALIZANDO CRUD
 /*    
     addItemLista();
     deleteItem();
-    editNomeLista();
     editItem(); 
     arrastarSoltarItem();
 */
@@ -132,35 +172,6 @@ var editItem = function(){
             $('#modalAddLista > form input[type=submit]').prop('disabled', true);
 
             $('#modalEditItem').fadeOut(200);
-
-            return false;
-        })
-    })
-}
-
-//editar nome da lista
-var editNomeLista = function(){
-    $('#areaLista').on('click','.lista .containerNomeLista .btsLista .btEditNomeLista', function(){
-
-        $('#modalAddLista > form input[type=submit]').prop('disabled', false);
-        
-        $('#modalEditLista').fadeIn(200);
-
-        $('#modalEditLista #nomeEditLista').focus();
-
-        var alteracaoNome = $(this).parent().parent().children('.nomeLista');
-        
-        $('#nomeEditLista').val($(alteracaoNome).html());
-
-        $('#modalEditLista > form').off('submit').submit(function(){
-
-            $(alteracaoNome).html($('#nomeEditLista').val());
-
-            $('#nomeEditLista').val('');
-
-            $('#modalAddLista > form input[type=submit]').prop('disabled', true);
-
-            $('#modalEditLista').fadeOut(200);
 
             return false;
         })

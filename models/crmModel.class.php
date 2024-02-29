@@ -34,5 +34,13 @@
             $data['deleteLista'] = true;
             die(json_encode($data));
         }
+
+        public static function editLista($idLista,$novoNome){
+            $sql = mysqlModel::conexaoBD()->prepare('UPDATE listas SET nome=? WHERE id=?');
+            $sql->execute(array($novoNome,$idLista));
+
+            $data['editLista'] = true;
+            die(json_encode($data));
+        }
     }
 ?>

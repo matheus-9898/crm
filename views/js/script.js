@@ -1,6 +1,71 @@
 $(function(){
-    exibirItem();
-    addLista();
+    //pegar listas e itens do BD
+    function getDados(){
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            url: "index.php/?ajax=getDados",
+            data: $(this).serialize()
+        }).done(function(data){
+            var dados = Object.entries(data.dados);
+
+            /* obter dados dos itens
+             var i = 0;
+            while(value[1][i] != null){
+                console.log(value[1][i]);
+                i++;
+            } */
+
+            //nome da lista: value[1]['nomeLista']
+
+            $('#areaLista').html('');
+
+            $.each(dados, function (index, value) { 
+                
+                $('<div class="lista"><div class="containerNomeLista"><span class="nomeLista">'+value[1]['nomeLista']+'</span><div class="btsLista"><span class="material-symbols-outlined btEditNomeLista">edit</span><span class="material-symbols-outlined btDeleteLista">delete</span></div></div><div class="areaItem"><?php $i = 0; while('+value[1]+'[$i] != null){ ?><div class="itemLista" draggable="true"><div class="contNomeCliente"><?= '+value[1]+'[$i]'+['nomeItem']+' ?></div><div class="contTelCliente"><?= '+value[1]+'[$i]'+['telefone']+' ?></div><div class="contEndCliente"><?= '+value[1]+'[$i]'+['endereco']+' ?></div><div class="contEmailCliente"><?= '+value[1]+'[$i]'+['email']+' ?></div><div class="btsItem"> <span class="material-symbols-outlined btEditItem">edit</span> <span class="material-symbols-outlined btDeleteItem">delete</span> </div></div><?php $i++;} ?></div><div class="containerBtAddItem"><span class="material-symbols-outlined btAddItem">add</span></div></div>').appendTo('#areaLista');
+
+            });
+        });
+    }
+    getDados();
+
+    //exibir modal add lista
+    $('.containerBtAddLista').off('click').click(function(){
+
+        $('#modalAddLista > form input[type=submit]').prop('disabled', false);
+
+        $('#modalAddLista').fadeIn(200);
+
+        $('#modalAddLista #nomeLista').focus();
+    })
+
+    //add Lista
+    $('#modalAddLista > form').off('submit').submit(function(){
+
+        $.ajax({
+            type: "post",
+            url: "index.php/?ajax=addLista",
+            data: $(this).serialize(),
+            dataType: "json"
+        }).done(function(data){
+            getDados();
+        });
+
+        $('#modalAddLista').fadeOut(200);
+
+        return false;
+    })
+
+    //exibir dados do item
+    $('#areaLista').on('click', '.lista .areaItem .itemLista',function(){
+
+        if($(this).children().last().css('display') == 'none'){
+            $(this).children().slice(1).css('display', 'block');
+        }else{
+            $(this).children().slice(1).css('display', 'none');
+        }
+    })
+    
 
 //APENAS SUBSTITUIR ESTAS FUNÇÕES POR FUNÇÕES PHP REALIZANDO CRUD
 /*    
@@ -13,39 +78,6 @@ $(function(){
 */
 
 })
-
-//adicionar lista
-var addLista = function(){
-
-    $('.containerBtAddLista').off('click').click(function(){
-
-        $('#modalAddLista > form input[type=submit]').prop('disabled', false);
-
-        $('#modalAddLista').fadeIn(200);
-
-        $('#modalAddLista #nomeLista').focus();
-
-        $('#modalAddLista > form').off('submit').submit(function(){
-
-            $.ajax({
-                type: "post",
-                url: "index.php/?addLista",
-                data: $(this).serialize(),
-                dataType: "json"
-            }).done(function(data){
-                /* if(data.success)
-                    console.log('sucesso');
-                else
-                    console.log('erro'); */
-            });
-
-            $('#modalAddLista').fadeOut(200);
-
-            return false;
-        })
-
-    })
-}
 
 //editar item
 var editItem = function(){
@@ -126,20 +158,6 @@ var deleteLista = function(){
     $('#areaLista').on('click','.lista .containerNomeLista .btsLista .btDeleteLista',function(){
         $(this).parent().parent().parent().remove();
     })
-}
-
-//exibir dados do item
-var exibirItem = function(){
-
-    $('#areaLista').on('click', '.lista .areaItem .itemLista',function(){
-
-        if($(this).children().last().css('display') == 'none'){
-            $(this).children().slice(1).css('display', 'block');
-        }else{
-            $(this).children().slice(1).css('display', 'none');
-        }
-    })
-
 }
 
 //adicionar item

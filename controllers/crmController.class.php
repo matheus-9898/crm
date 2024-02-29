@@ -5,7 +5,7 @@
 
     class crmController{
         public static function executar(){
-            views\view::render('crm',self::getDados());
+            views\view::render('crm');
         }
         public static function sair(){
             session_destroy();
@@ -23,35 +23,36 @@
         }
 
         public static function getDados(){
-            $listas = models\crmModel::getListas();
-            $itens = models\crmModel::getItens();
+                $listas = models\crmModel::getListas();
+                $itens = models\crmModel::getItens();
 
-            $dados = [];
-            
-            foreach ($listas as $keyListas => $valListas) {
+                $dados = [];
+                
+                foreach ($listas as $keyListas => $valListas) {
 
-                $i = 0;
+                    $i = 0;
 
-                $dados[$keyListas]['idLista'] = $valListas['id'];
-                $dados[$keyListas]['nomeLista'] = $valListas['nome'];
+                    $dados[$keyListas]['idLista'] = $valListas['id'];
+                    $dados[$keyListas]['nomeLista'] = $valListas['nome'];
 
-                foreach ($itens as $keyItens => $valItens) {
+                    foreach ($itens as $keyItens => $valItens) {
 
-                    if($valItens['lista_id'] == $valListas['id']){
-                        $dados[$keyListas][$i]=[
-                            'idItem' => $valItens['id'],
-                            'nomeItem' => $valItens['nome'],
-                            'telefone' => $valItens['telefone'],
-                            'endereco' => $valItens['endereco'],
-                            'email' => $valItens['email'],
-                        ];
-                        $i++;
+                        if($valItens['lista_id'] == $valListas['id']){
+                            $dados[$keyListas][$i]=[
+                                'idItem' => $valItens['id'],
+                                'nomeItem' => $valItens['nome'],
+                                'telefone' => $valItens['telefone'],
+                                'endereco' => $valItens['endereco'],
+                                'email' => $valItens['email'],
+                            ];
+                            $i++;
+                        }
                     }
+
                 }
 
-            }
-
-            return $dados;
+                $data['dados'] = $dados;
+                die(json_encode($data));
         }
 
         public static function addLista($nomeLista){

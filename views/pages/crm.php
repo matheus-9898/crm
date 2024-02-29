@@ -56,46 +56,27 @@
 
     <main id="containerListas">
         <div id="areaLista">
-
-            <?php
-            foreach ($dados as $key => $value) {
-            ?>
-
-                <div class="lista">
+<!--                 <div class="lista">
                     <div class="containerNomeLista">
-                        <span class="nomeLista"><?= $value['nomeLista'] ?></span>
+                        <span class="nomeLista">nome Lista</span>
                         <div class="btsLista">
                             <span class="material-symbols-outlined btEditNomeLista">edit</span>
                             <span class="material-symbols-outlined btDeleteLista">delete</span>
                         </div>
                     </div>
                     <div class="areaItem">
-
-                        <?php
-                        if (is_array($value)) {
-                            for($i=0;$i<count($value)-2;$i++){
-                        ?>
-                                <div class="itemLista" draggable="true">
-                                    <div class="contNomeCliente"><?= $value[$i]['nomeItem'] ?></div>
-                                    <div class="contTelCliente"><?= $value[$i]['telefone'] ?></div>
-                                    <div class="contEndCliente"><?= $value[$i]['endereco'] ?></div>
-                                    <div class="contEmailCliente"><?= $value[$i]['email'] ?></div>
-                                    <div class="btsItem"> <span class="material-symbols-outlined btEditItem">edit</span> <span class="material-symbols-outlined btDeleteItem">delete</span> </div>
-                                </div>
-                        <?php
-                            }
-                        }
-                        ?>
-
+                        <div class="itemLista" draggable="true">
+                            <div class="contNomeCliente">nome</div>
+                            <div class="contTelCliente">telefone</div>
+                            <div class="contEndCliente">endereço</div>
+                            <div class="contEmailCliente">email</div>
+                            <div class="btsItem"> <span class="material-symbols-outlined btEditItem">edit</span> <span class="material-symbols-outlined btDeleteItem">delete</span> </div>
+                        </div>
                     </div>
-
                     <div class="containerBtAddItem">
                         <span class="material-symbols-outlined btAddItem">add</span>
                     </div>
-                </div>
-            <?php
-            }
-            ?>
+                </div> -->
         </div>
 
         <div class="containerBtAddLista">

@@ -19,6 +19,9 @@
         public static function addLista($nomeLista){
             $sql = mysqlModel::conexaoBD()->prepare('INSERT INTO listas VALUES (?,?,?)');
             $sql->execute(array(null,$nomeLista,$_SESSION['idUsuario']));
+
+            $data['addLista'] = true;
+            die(json_encode($data));
         }
     }
 ?>

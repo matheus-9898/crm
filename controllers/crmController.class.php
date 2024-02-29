@@ -58,5 +58,9 @@
         public static function addLista($nomeLista){
             models\crmModel::addLista($nomeLista);
         }
+
+        public static function deleteLista($idLista){
+            models\crmModel::deleteLista($idLista);
+        }
     }
 ?>

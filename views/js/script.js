@@ -15,14 +15,14 @@ $(function(){
                 console.log(value[1][i]['nomeItem']);
                 i++;
             } */
-
             //nome da lista: value[1]['nomeLista']
+            //id da lista: value[1]['idLista']
 
             $('#areaLista').html('');
 
             $.each(dados, function (index, value) {
 
-                var html = '<div class="lista"><div class="containerNomeLista"><span class="nomeLista">'+value[1]['nomeLista']+'</span><div class="btsLista"><span class="material-symbols-outlined btEditNomeLista">edit</span><span class="material-symbols-outlined btDeleteLista">delete</span></div></div><div class="areaItem">';
+                var html = '<div class="lista"><div class="containerNomeLista"><span class="nomeLista">'+value[1]['nomeLista']+'</span><div class="btsLista"><span class="material-symbols-outlined btEditNomeLista" id-lista="'+value[1]['idLista']+'">edit</span><span class="material-symbols-outlined btDeleteLista" id-lista="'+value[1]['idLista']+'">delete</span></div></div><div class="areaItem">';
 
                 var i = 0;
                 while(value[1][i] != null){
@@ -32,7 +32,7 @@ $(function(){
                     i++;
                 }
 
-                html += '</div><div class="containerBtAddItem"><span class="material-symbols-outlined btAddItem">add</span></div></div>';
+                html += '</div><div class="containerBtAddItem"><span class="material-symbols-outlined btAddItem" id-lista="'+value[1]['idLista']+'">add</span></div></div>';
 
                 $(html).appendTo('#areaLista');
             });
@@ -77,18 +77,30 @@ $(function(){
         }
     })
     
+    //deletar lista
+    $('#areaLista').on('click','.lista .containerNomeLista .btsLista .btDeleteLista',function(){
+        var idLista = parseInt(this.getAttribute('id-lista'));
 
+        $.ajax({
+            type: "post",
+            url: "index.php/?ajax=deleteLista",
+            data: {idLista : idLista},
+            dataType: "json",
+            success: function (data) {
+                getDados();
+            }
+        });
+    })
+
+})
 //APENAS SUBSTITUIR ESTAS FUNÇÕES POR FUNÇÕES PHP REALIZANDO CRUD
 /*    
     addItemLista();
-    deleteLista();
     deleteItem();
     editNomeLista();
     editItem(); 
     arrastarSoltarItem();
 */
-
-})
 
 //editar item
 var editItem = function(){

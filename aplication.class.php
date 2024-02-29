@@ -6,9 +6,11 @@
                     case 'addLista':
                         controllers\crmController::addLista($_POST['nomeLista']);
                         break;
-                        
                     case 'getDados':
                         controllers\crmController::getDados();
+                        break;
+                    case 'deleteLista':
+                        controllers\crmController::deleteLista($_POST['idLista']);
                         break;
                     
                     default:

@@ -23,5 +23,16 @@
             $data['addLista'] = true;
             die(json_encode($data));
         }
+
+        public static function deleteLista($idLista){
+            $sql = mysqlModel::conexaoBD()->prepare('DELETE FROM listas WHERE id=?');
+            $sql->execute(array($idLista));
+
+            $sql = mysqlModel::conexaoBD()->prepare('DELETE FROM itens WHERE lista_id=?');
+            $sql->execute(array($idLista));
+
+            $data['deleteLista'] = true;
+            die(json_encode($data));
+        }
     }
 ?>

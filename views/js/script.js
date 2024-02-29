@@ -27,7 +27,7 @@ $(function(){
                 var i = 0;
                 while(value[1][i] != null){
 
-                    html += '<div class="itemLista" draggable="true"><div class="contNomeCliente">'+value[1][i]['nomeItem']+'</div><div class="contTelCliente">'+value[1][i]['telefone']+'</div><div class="contEndCliente">'+value[1][i]['endereco']+'</div><div class="contEmailCliente">'+value[1][i]['email']+'</div><div class="btsItem"> <span class="material-symbols-outlined btEditItem">edit</span> <span class="material-symbols-outlined btDeleteItem">delete</span> </div></div>';
+                    html += '<div class="itemLista" draggable="true"><div class="contNomeCliente">'+value[1][i]['nomeItem']+'</div><div class="contTelCliente">'+value[1][i]['telefone']+'</div><div class="contEndCliente">'+value[1][i]['endereco']+'</div><div class="contEmailCliente">'+value[1][i]['email']+'</div><div class="btsItem"> <span class="material-symbols-outlined btEditItem" id-item="'+value[1][i]['idItem']+'">edit</span> <span class="material-symbols-outlined btDeleteItem" id-item="'+value[1][i]['idItem']+'">delete</span> </div></div>';
 
                     i++;
                 }
@@ -167,13 +167,27 @@ $(function(){
         })
     })
 
+    //deletar itens das listas
+    $('#areaLista').on('click','.lista .areaItem .itemLista .btsItem .btDeleteItem',function(){
+        var idItem = parseInt(this.getAttribute('id-item'));
+
+        $.ajax({
+            type: "post",
+            url: "index.php/?ajax=deleteItem",
+            data: {idItem : idItem},
+            dataType: "json",
+            success: function (data) {
+                getDados();
+            }
+        });
+    })
+
 
 })
 
 
 //APENAS SUBSTITUIR ESTAS FUNÇÕES POR FUNÇÕES PHP REALIZANDO CRUD
 /*    
-    deleteItem();
     editItem(); 
     arrastarSoltarItem();
 */
@@ -211,14 +225,6 @@ var editItem = function(){
 
             return false;
         })
-    })
-}
-
-//deletar lista
-var deleteItem = function(){
-
-    $('#areaLista').on('click','.lista .areaItem .itemLista .btsItem .btDeleteItem',function(){
-        $(this).parent().parent().remove();
     })
 }
 

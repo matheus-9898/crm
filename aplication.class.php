@@ -18,6 +18,9 @@
                     case 'addItem':
                         controllers\crmController::addItem($_POST['idLista'],$_POST['nome'],$_POST['tel'],$_POST['end'],$_POST['email']);
                         break;
+                    case 'deleteItem':
+                        controllers\crmController::deleteItem($_POST['idItem']);
+                        break;
                     
                     default:
                         # code...

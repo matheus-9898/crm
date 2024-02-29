@@ -62,13 +62,17 @@
         public static function deleteLista($idLista){
             models\crmModel::deleteLista($idLista);
         }
-
+        
         public static function editLista($idLista,$novoNome){
             models\crmModel::editLista($idLista,$novoNome);
         }
-
+        
         public static function addItem($idLista,$nome,$tel,$end,$email){
             models\crmModel::addItem($idLista,$nome,$tel,$end,$email);
+        }
+        
+        public static function deleteItem($idItem){
+            models\crmModel::deleteItem($idItem);
         }
     }
 ?>

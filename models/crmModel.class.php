@@ -50,5 +50,13 @@
             $data['addItem'] = true;
             die(json_encode($data));
         }
+        
+        public static function deleteItem($idItem){
+            $sql = mysqlModel::conexaoBD()->prepare('DELETE FROM itens WHERE id=?');
+            $sql->execute(array($idItem));
+
+            $data['deleteItem'] = true;
+            die(json_encode($data));
+        }
     }
 ?>

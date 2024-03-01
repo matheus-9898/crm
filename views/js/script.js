@@ -27,7 +27,7 @@ $(function(){
                 var i = 0;
                 while(value[1][i] != null){
 
-                    html += '<div class="itemLista" draggable="true"><div class="contNomeCliente">'+value[1][i]['nomeItem']+'</div><div class="contTelCliente">'+value[1][i]['telefone']+'</div><div class="contEndCliente">'+value[1][i]['endereco']+'</div><div class="contEmailCliente">'+value[1][i]['email']+'</div><div class="btsItem"> <span class="material-symbols-outlined btEditItem" id-item="'+value[1][i]['idItem']+'">edit</span> <span class="material-symbols-outlined btDeleteItem" id-item="'+value[1][i]['idItem']+'">delete</span> </div></div>';
+                    html += '<div class="itemLista"><div class="contNomeCliente">'+value[1][i]['nomeItem']+'</div><div class="contTelCliente">'+value[1][i]['telefone']+'</div><div class="contEndCliente">'+value[1][i]['endereco']+'</div><div class="contEmailCliente">'+value[1][i]['email']+'</div><div class="btsItem"> <span class="material-symbols-outlined btEditItem" id-item="'+value[1][i]['idItem']+'">edit</span> <span class="material-symbols-outlined btDeleteItem" id-item="'+value[1][i]['idItem']+'">delete</span> </div></div>';
 
                     i++;
                 }
@@ -259,13 +259,7 @@ $(function(){
 
 })
 
-//ATENÇÃO
-//APENAS SUBSTITUIR ESTAS FUNÇÕES POR FUNÇÕES PHP REALIZANDO CRUD
-/*    
-    arrastarSoltarItem();
-*/
-
-//arrastar e soltar item
+//função arrastar e soltar itens (INATIVA)
 var arrastarSoltarItem = function(){
 
     //Quando começa a arrastar

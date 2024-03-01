@@ -42,7 +42,6 @@ $(function(){
 
     //exibir modal add lista
     $('.containerBtAddLista').off('click').click(function(){
-
         fecharTodosModais();
         abrirModal('#modalAddLista','#modalAddLista #nomeLista');
     })
@@ -60,6 +59,7 @@ $(function(){
         });
 
         $('#modalAddLista').fadeOut(200);
+        $('#fundoModais').fadeOut(200);
         $('#modalAddLista > form input:not([type=submit])').val('');
 
         return false;
@@ -93,6 +93,7 @@ $(function(){
             });
 
             $('#modalEditLista').fadeOut(200);
+            $('#fundoModais').fadeOut(200);
 
             return false;
         })
@@ -154,6 +155,7 @@ $(function(){
             });
 
             $('#modalAddItem').fadeOut(200);
+            $('#fundoModais').fadeOut(200);
             $('#modalAddItem > form input:not([type=submit])').val('');
 
             return false;
@@ -215,6 +217,7 @@ $(function(){
 
             $('#modalAddLista > form input[type=submit]').prop('disabled', true);
             $('#modalEditItem').fadeOut(200);
+            $('#fundoModais').fadeOut(200);
 
             return false;
         })
@@ -226,14 +229,33 @@ $(function(){
         $('#modalAddLista').fadeOut(200);
         $('#modalEditItem').fadeOut(200);
         $('#modalAddItem').fadeOut(200);
+
+        $('#fundoModais').fadeOut(200);
+
+        $('#modalAddItem > form input:not([type=submit])').val('');
+        $('#modalAddLista > form input:not([type=submit])').val('');
     }
 
     //abrir modais
     function abrirModal(modal,focus){
         $('#modalAddLista > form input[type=submit]').prop('disabled', false);
+        $('#fundoModais').fadeIn(200);
         $(modal).fadeIn(200);
         $(focus).focus();
     }
+
+    //fechar modais por clique no fundo
+    $('#fundoModais').click(function(){
+        fecharTodosModais();
+    })
+
+    //clique do 'esc'
+    $(document).keydown(function(e) {
+        if (e.keyCode == 27) {
+            fecharTodosModais();
+        }
+    });
+    
 
 })
 

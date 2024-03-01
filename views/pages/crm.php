@@ -11,6 +11,8 @@
 
 <body>
 
+    <div id="fundoModais"></div>
+
     <div id="modalAddItem">
         <form>
             <input type="text" placeholder="Nome" id="nomeCliente" autocomplete="off">

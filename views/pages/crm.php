@@ -47,8 +47,8 @@
 
     <header>
         <div id="containerCabecalho">
-            <div id="containerLogo">LOGO</div>
             <div><a href="<?= ROOT_PATH ?>?sair">Sair</a></div>
+            <div id="containerLogo">CRM</div>
             <div id="containerAutor">Desenvolvido por Matheus Machado</div>
         </div>
     </header>

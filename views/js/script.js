@@ -43,10 +43,13 @@ $(function(){
     //exibir modal add lista
     $('.containerBtAddLista').off('click').click(function(){
 
+        $('#modalEditLista').fadeOut(200);
+        $('#modalAddLista').fadeOut(200);
+        $('#modalEditItem').fadeOut(200);
+        $('#modalAddItem').fadeOut(200);
+
         $('#modalAddLista > form input[type=submit]').prop('disabled', false);
-
         $('#modalAddLista').fadeIn(200);
-
         $('#modalAddLista #nomeLista').focus();
     })
 
@@ -70,10 +73,13 @@ $(function(){
     //abrir modal e editar nome da lista
     $('#areaLista').on('click','.lista .containerNomeLista .btsLista .btEditNomeLista', function(){
 
-        $('#modalAddLista > form input[type=submit]').prop('disabled', false);
-        
-        $('#modalEditLista').fadeIn(200);
+        $('#modalEditLista').fadeOut(200);
+        $('#modalAddLista').fadeOut(200);
+        $('#modalEditItem').fadeOut(200);
+        $('#modalAddItem').fadeOut(200);
 
+        $('#modalAddLista > form input[type=submit]').prop('disabled', false);
+        $('#modalEditLista').fadeIn(200);
         $('#modalEditLista #nomeEditLista').focus();
 
         var alteracaoNome = $(this).parent().parent().children('.nomeLista');
@@ -132,7 +138,11 @@ $(function(){
     //adicionar item nas listas
     $('#areaLista').on('click','.lista .containerBtAddItem .btAddItem',function(){
 
-        //var areaItem = $(this).parent().prev();
+        $('#modalEditLista').fadeOut(200);
+        $('#modalAddLista').fadeOut(200);
+        $('#modalEditItem').fadeOut(200);
+        $('#modalAddItem').fadeOut(200);
+
         $('#modalAddLista > form input[type=submit]').prop('disabled', false);
         $('#modalAddItem').fadeIn(200);
         $('#modalAddItem #nomeCliente').focus();
@@ -184,6 +194,11 @@ $(function(){
 
     //editar itens
     $('#areaLista').on('click','.lista .areaItem .itemLista .btsItem .btEditItem', function(){
+
+        $('#modalEditLista').fadeOut(200);
+        $('#modalAddLista').fadeOut(200);
+        $('#modalEditItem').fadeOut(200);
+        $('#modalAddItem').fadeOut(200);
 
         $('#modalAddLista > form input[type=submit]').prop('disabled', false);
         $('#modalEditItem').fadeIn(200);

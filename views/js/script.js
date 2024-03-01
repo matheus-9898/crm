@@ -245,19 +245,11 @@ $(function(){
 
 })
 
-
+//ATENÇÃO
 //APENAS SUBSTITUIR ESTAS FUNÇÕES POR FUNÇÕES PHP REALIZANDO CRUD
 /*    
     arrastarSoltarItem();
 */
-
-//deletar lista
-var deleteLista = function(){
-
-    $('#areaLista').on('click','.lista .containerNomeLista .btsLista .btDeleteLista',function(){
-        $(this).parent().parent().parent().remove();
-    })
-}
 
 //arrastar e soltar item
 var arrastarSoltarItem = function(){
